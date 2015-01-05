@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AngularJS</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/jan.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="codemirror/theme/eclipse.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+    <script type="text/ng-template" charset="utf-8" id="liveExample.html">
+      <div class="playground"></div>
+      <textarea class="source"></textarea>
+      <button class="reload" ng-click="run()">Run</button>
+      <select ng-model="snippet" ng-options="s.code as s.title for s in snippets" ng-change="loadSnippet(snippet)">
+    </script>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>AngularJS</h1>
+					<h3>Javascript Frontend MVC Framework</h3>
+					<p>
+						<small><a href="http://jan.varwig.org">Jan Varwig</a> / <a href="http://twitter.com/agento">@agento</a></small>
+					</p>
+          <img src="img/contentful.svg" alt="" />
+				</section>
+
+				<section>
+          <img src="img/AngularJS-large.png" alt="AngularJS">
+					<h2>What is AngularJS</h2>
+					<p>
+            AngularJS is a framework for developing component based Javascript Apps in the browser.
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Difference to other Frameworks</h2>
+						<p>
+              Why would you use angular over something else?
+						</p>
+						<p>
+              Backbone, Knockout, Ember, Meteor
+						</p>
+					</section>
+					<section>
+						<h2>Declarative Development</h2>
+            <ul>
+              <li>Describe the structure of your app in HTML</li>
+              <li>Represent your data however you want (pure objects/custom classes)</li>
+              <li>Describe data-dependencies through watchers</li>
+              <li>Change UI state in reaction to data changes</li>
+            </ul>
+					</section>
+					<section>
+						<h2>No templates</h2>
+						<p>The DOM is your template</p>
+            <ul>
+              <li>Describe the structure of your app in HTML</li>
+              <li>Describe data-dependencies through watchers</li>
+            </ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Why is that so powerful?</h2>
+          <live-example>
+            <script type="text/template" data-title="Normal">
+            <form name="form">
+              <p>
+                <input type="text" ng-model="name"/>
+              </p>
+              <p>
+                {{name}}
+              </p>
+            </form>
+            </script>
+            <script type="text/template" data-title="Reverse">
+              <code>
+                function Foo($scope){
+                  $scope.rev = function(s) {
+                    if (s) {
+                      return s.split('').reverse().join('');
+                    }
+                  }
+                }
+              </code>
+              <form name="form" ng-controller="Foo">
+                <p>
+                  <input type="text" ng-model="name"/>
+                </p>
+                <p>
+                  {{rev(name)}}
+                </p>
+              </form>
+            </script>
+            <script type="text/template" data-title="TODO">
+              <code>
+                function Foo($scope){
+                  $scope.tasks = [];
+                  $scope.addTask = function() {
+                    $scope.tasks.push($scope.newTask);
+                    $scope.newTask = null;
+                  };
+                  $scope.removeTask = function (index) {
+                    $scope.tasks.splice(index, 1);
+                  };
+                }
+              </code>
+              <form name="form" ng-controller="Foo">
+                <h2>{{tasks.length}} Tasks</h2>
+                <p>
+                  <input type="text" ng-model="newTask"/>
+                  <button ng-click="addTask()">Add</button>
+                </p>
+                <ul>
+                  <li ng-repeat="(index, task) in tasks">
+                    {{task}} <button ng-click="removeTask(index)">X</button>
+                  </li>
+                </ul>
+              </form>
+            </script>
+            <script type="text/template" data-title="Red Square">
+              X: <input type="text" ng-model="x">
+              <br>
+              Y: <input type="text" ng-model="y">
+
+              <div style="background-color: red; width: 20px; height: 20px; position: absolute; left: {{x}}; top: {{y}}"></div>
+                            
+            </script>
+          </live-example>
+				</section>
+
+        <section>
+          <h2>Angular Development Model: Classic MVC</h2>
+          <ul>
+            <li>Data driven, component based</li>
+            <li>
+              Directives
+              <ul>
+                <li>Look (DOM)</li>
+                <li>Behavior (Event Handling)</li>
+              </ul>
+            </li>
+            <li>
+              Controller
+              <ul>
+                <li>Provide data to scope</li>
+                <li>Coordinate components &amp; services</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+				<section>
+          <section>
+            <h2>Library Functions</h2>
+            <ul>
+              <li>Form Validation</li>
+              <li>REST Adapter</li>
+              <li>Cookies</li>
+              <li>LocalStorage</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Niceties</h2>
+            <ul>
+              <li>Small (82kB base Version)</li>
+              <li>Fast</li>
+              <li>Plays very well with others (modularized, clean API, encapsulation)</li>
+              <li>Kills default behavior on Forms & Links (if necessary)</li>
+            </ul>
+          </section>
+				</section>
+
+				<section>
+					<h2>Power engineered</h2>
+          <ul>
+            <li>Throughtfully designed</li>
+            <li>Proper MVC</li>
+            <li>Dependency Injection Framework</li>
+            <li>Strong testing support</li>
+            <li>Great Documentation</li>
+          </ul>
+				</section>
+
+				<section>
+					<h2>How does it work?</h2>
+          <img src="img/magnets.jpg" alt="Fucking Magnets" />
+				</section>
+
+				<section>
+          <section>
+            <h2>Modules</h2>
+            <ul>
+              <li>Define modules</li>
+              <li>Declare dependencies</li>
+              <li>Provide services</li>
+              <li>Initialize app</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Define modules</h2>
+<pre><code contenteditable class="javascript">// New Module
+angular.module('demo/controllers',[]);
+angular.module('demo/directives',[]);
+
+// Dependencies
+angular.module('demo', ['demo/controllers', 'demo/directives']);
+</code></pre>
+          </section>
+          <section>
+            <h2>Provide services</h2>
+            <pre><code contenteditable class="javascript">
+angular.module('demo/controllers')
+  .controller('FooCtrl', function($scope){
+    $scope.foo = 'bar';
+    $scope.alert = function(){
+      $scope.foo = 'baz';
+    };
+    $scope.$watch('foo', function (value, old, scope) {
+      scope.fooToo = value;
+    });
+  })
+  .controller('BarCtrl', function($scope, $resource){...});
+            </code></pre>
+          </section>
+          <section>
+            <h2>Initialize app</h2>
+            <pre><code contenteditable class="js">
+angular.bootstrap(document, 'demo');
+            </code></pre>
+            <pre><code contenteditable class="html">
+&lt;body ng-app="demo"&gt;
+  ...
+&lt;/body&gt;
+            </code></pre>
+          </section>
+				</section>
+
+        <section>
+          <section>
+            <h2>Dependency injection</h2>
+            <ul>
+              <li>Declare and provide services</li>
+              <li>Inject services into other services through factories</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Declare and provide</h2>
+            <pre><code contenteditable class="js">
+angular.module('demo')
+  .service('cow', function(){
+    return {
+      moo: function(){
+        alert('Moooo');
+      }
+    };
+  })
+  .service('farm', function(cow){
+    cow.moo();
+  });
+
+            </code></pre>
+
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>The Angular Compiler</h2>
+            <p>This is where the magic happens</p>
+            <ul>
+              <li class="fragment">Parses the DOM tree for directives</li>
+              <li class="fragment">
+                Found directives
+                <ul>
+                  <li>Manipulate their children further</li>
+                  <li>Populate Scopes with data and functions</li>
+                  <li>Instantiate controllers</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Directives</h2>
+            <live-example>
+              <script type="text/template" data-title="Blink">
+                <code>
+                  angular.module('demo').directive('blink', function() {
+                    return {
+                      restrict: 'E',
+                      link: function(scope, elem, attr){
+                        var visible = true;
+                        var timer = setInterval(function () {
+                          if (visible = !visible) {
+                            elem.show();
+                          } else {
+                            elem.hide();
+                          }
+                        }, attr['interval']);
+                      }
+                    }
+                  })
+                </code>
+                <div ng-app="demo">
+                  <blink interval="500">Long live the 90s</blink>
+                </div>
+              </script>
+              <script type="text/template" data-title="Template">
+                <code>
+                  angular.module('demo').directive('with', function() {
+                    return {
+                      restrict: 'A',
+                      template:
+                        '<li ng-repeat="item in items">{{item}}</li>',
+                      link: function(scope, elem, attr){
+                        scope.items = attr['with'].split(',');
+                      }
+                    }
+                  })
+                </code>
+                <div ng-app="demo">
+                  <ul with="a,b,c"></ul>
+                </div>
+              </script>
+              <script type="text/template" data-title="Controller">
+                <code>
+                  angular.module('demo')
+                    .controller('FooCtrl', function ($scope) {
+                      $scope.foo = 'Bar';
+                    })
+                    .directive('foo', function() {
+                      return {
+                        restrict: 'C',
+                        scope: true,
+                        controller: 'FooCtrl'
+                      }
+                    })
+                </code>
+                <div ng-app="demo">
+                  Outer Foo: {{foo}}
+                  <br/>
+                  <span class="foo">Inner Foo: {{foo}}</foo>
+                </div>
+              </script>
+            </live-example>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Scopes</h2>
+            <ul>
+              <li>Central structure of your app</li>
+              <li>Hold functions and data</li>
+              <li>Directives <i>can</i> introduce new Scopes</li>
+              <li>Prototypical inherited</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Inheritance</h2>
+            <ul>
+              <li>Child scope properties overshadow parent scope properties</li>
+              <li>Isolated scopes don't</li>
+              <li>Following DOM-structure</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Watchers and Binding</h2>
+            <p>Scopes responsible for binding and <br> communication between components</p>
+            <ul>
+              <li>
+                Dynamic behavior always result of watchers firing
+                <pre><code>
+$scope.$watch('foo', function(value, old, scope){
+  //...
+});
+
+$scope.$watch(function(scope){
+  return scope.foo;
+}, function(value, old, scope){
+  //...
+});
+                </code></pre>
+                <pre><code ng-non-bindable>
+&lt;span&gt;{{foo}}&lt;/span&gt;
+                </code></pre>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Watchers and Binding</h2>
+            <p>Not event based</p>
+            <ul>
+              <li>Dirty Tracking</li>
+              <ul>
+                <li>Evaluate Watchers, execute handlers, until watchers don't change anymore</li>
+                <li>Until next $digest cycle (triggered by external event)</li>
+              </ul>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Watchers and Binding</h2>
+            <img src="img/concepts-runtime.png" alt="Digest Cycle" />
+          </section>
+
+          <section>
+            <h2>Watchers and Binding</h2>
+            <p>Triggering $digest cycle from external events</p>
+            <pre><code>
+$.getJSON(url).success(function (data) {
+  $scope.$apply(function (scope) {
+    scope.result = data;
+  };
+})
+            </code></pre>
+            <p>Not necessary for angular-triggered events</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Events</h2>
+            <pre><code>
+// Sending upwards
+$scope.$emit('eventName', payload);
+
+// Sending downwards
+$scope.$broadcast('eventName', payload);
+
+// Receiving
+$scope.$on('eventName', function handler(event, payload){
+  // ...
+})
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>Debugger</h2>
+          <p>Batarang: Chrome Extension</p>
+        </section>
+
+        <section>
+          <h2>Forms</h2>
+          
+          <live-example>
+            <script type="text/template" data-title="Forms">
+              <div ng-controller="Controller">
+                <form novalidate class="css-form">
+                  Name:
+                    <input type="text" ng-model="user.name" required /><br />
+                  E-mail:
+                    <input type="email" ng-model="user.email" required /><br />
+                  <button ng-click="reset()">RESET</button>
+                  <button ng-click="update(user)">SAVE</button>
+                </form>
+                <pre>form = {{user | json}}</pre>
+                <pre>master = {{master | json}}</pre>
+              </div>
+
+              <code>
+                function Controller($scope) {
+                  $scope.master= {};
+                 
+                  $scope.update = function(user) {
+                    $scope.master= angular.copy(user);
+                  };
+                 
+                  $scope.reset = function() {
+                    $scope.user = angular.copy($scope.master);
+                  };
+                 
+                  $scope.reset();
+                }
+              </code>
+              
+              <style type="text/css">
+                .css-form input.ng-invalid.ng-dirty {
+                  background-color: #FA787E;
+                }
+              
+                .css-form input.ng-valid.ng-dirty {
+                  background-color: #78FA89;
+                }
+              </style>
+            </script>
+          </live-example>
+        </section>
+
+        <section>
+          <h2>Omissions</h2>
+          <ul>
+            <li>Testing</li>
+            <li>Async Services</li>
+          </ul>
+        </section>
+
+				<section>
+          <h2>THE END</h2>
+          <p><a href="http://angularjs.org">http://angularjs.org</a></p>
+					<p>
+            <a href="http://jan.varwig.org/">Jan Varwig</a>
+            –
+            <a href="http://twitter.com/agento">@agento</a>
+          </p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          // { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'codemirror/lib/codemirror.js'},
+          { src: 'codemirror/mode/javascript/javascript.js'},
+          { src: 'codemirror/mode/css/css.js'},
+          { src: 'codemirror/mode/xml/xml.js'},
+          { src: 'codemirror/mode/htmlmixed/htmlmixed.js'},
+          { src: 'js/angular.min.js'},
+          { src: 'js/live_example.js', callback: function(){ angular.bootstrap(document, ['angularReveal']); } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
