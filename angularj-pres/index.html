@@ -163,7 +163,6 @@
 
 				<section>
 					<h2>How does it work?</h2>
-          <img src="img/magnets.jpg" alt="Fucking Magnets" />
 				</section>
 
 				<section>
@@ -204,9 +203,6 @@ angular.module('demo/controllers')
           </section>
           <section>
             <h2>Initialize app</h2>
-            <pre><code contenteditable class="js">
-angular.bootstrap(document, 'demo');
-            </code></pre>
             <pre><code contenteditable class="html">
 &lt;body ng-app="demo"&gt;
   ...
@@ -506,7 +502,7 @@ $scope.$on('eventName', function handler(event, payload){
 				center: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
