@@ -266,6 +266,19 @@ app.controller('CalculatorController', function($scope, CalculatorService) {
 						<iframe width="100%" height="600" src="http://jsfiddle.net/delimitless/nzdvzrnw/2/embedded/html,js,result/presentation"></iframe>
 					</section>
 				</section>
+				<section>
+					<h2>TODO: Briefly Mention Testing</h2>
+				</section>
+				<section>
+					<h2>TODO: Talk about scaffolding with Yeoman + friends</h2>
+				</section>
+				<section>
+					<h2>TODO: Demo</h2>
+				</section>
+				<section>
+					<h2>Bonus: Add background colors, slide transition</h2>
+					<h2>Bonus: Add REST service call to one of the samples</h2>
+				</section>
 			</div>
 		</div>
 
@@ -282,7 +295,6 @@ app.controller('CalculatorController', function($scope, CalculatorService) {
 				progress: true,
 				history: true,
 				center: true,
-
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
@@ -303,6 +315,23 @@ app.controller('CalculatorController', function($scope, CalculatorService) {
           { src: 'js/live_example.js', callback: function(){ angular.bootstrap(document, ['angularReveal']); } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
+			});
+			
+			/**
+			* Workaround for iframes not loading when first encountered.
+			*/
+			Reveal.addEventListener('slidechanged', function(event){
+				if (event.currentSlide.parentElement.classList.contains('stack')){
+					var stack = event.currentSlide.parentElement; // I only have iframes in stacks, YMMV
+					if (!stack.dataset.iframesLoaded){
+						var innerIframes = stack.querySelectorAll('iframe');
+						for (var i = 0; i < innerIframes.length; i++){
+							var url = innerIframes[i].getAttribute('src');
+							innerIframes[i].setAttribute('src', url);
+						}
+					}
+					stack.dataset.iframesLoaded = true; // so we don't keep reloading 
+				}
 			});
 
 		</script>
