@@ -84,12 +84,12 @@
 					</section>
 				</section>
 			
+		<section>
 			<section>
-				<section>
-					<h2>Examples</h2>
-          <h3>Normal<h3>
-          <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/2g7kaauL/embedded/html,js,result/presentation"></iframe>
-				</section>
+				<h2>Examples</h2>
+				<h3>Normal<h3>
+				<iframe width="100%" height="300" src="http://jsfiddle.net/2g7kaauL/1/embedded/html,js,result/presentation"></iframe>
+			</section>
 			<section>
 				<h3>Reverse</h3>
 				<iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/u8d0qfye/embedded/html,js,result/presentation"></iframe>
@@ -234,7 +234,6 @@ angular.module('demo')
 
           </section>
         </section>
-        <section>
           <section>
             <h2>The Angular Compiler</h2>
             <p>This is where the magic happens</p>
@@ -251,71 +250,16 @@ angular.module('demo')
             </ul>
           </section>
           <section>
-            <h2>Directives</h2>
-			<iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/1hmuw9Lq/embedded/js,html,result/presentation"></iframe>
-            <live-example>
-              <script type="text/template" data-title="Blink">
-                <code>
-                  angular.module('demo', []).directive('blink', function() {
-                    return {
-                      restrict: 'E',
-                      link: function(scope, elem, attr){
-                        var visible = true;
-                        var timer = setInterval(function () {
-                          if (visible = !visible) {
-                            elem.show();
-                          } else {
-                            elem.hide();
-                          }
-                        }, attr['interval']);
-                      }
-                    }
-                  })
-                </code>
-                <div ng-app="demo">
-                  <blink interval="500">Long live the 90s</blink>
-                </div>
-              </script>
-              <script type="text/template" data-title="Template">
-                <code>
-                  angular.module('demo').directive('with', function() {
-                    return {
-                      restrict: 'A',
-                      template:
-                        '<li ng-repeat="item in items">{{item}}</li>',
-                      link: function(scope, elem, attr){
-                        scope.items = attr['with'].split(',');
-                      }
-                    }
-                  })
-                </code>
-                <div ng-app="demo">
-                  <ul with="a,b,c"></ul>
-                </div>
-              </script>
-              <script type="text/template" data-title="Controller">
-                <code>
-                  angular.module('demo')
-                    .controller('FooCtrl', function ($scope) {
-                      $scope.foo = 'Bar';
-                    })
-                    .directive('foo', function() {
-                      return {
-                        restrict: 'C',
-                        scope: true,
-                        controller: 'FooCtrl'
-                      }
-                    })
-                </code>
-                <div ng-app="demo">
-                  Outer Foo: {{foo}}
-                  <br/>
-                  <span class="foo">Inner Foo: {{foo}}</foo>
-                </div>
-              </script>
-            </live-example>
+			<section>
+				<h2>Custom Directives</h2>
+				<h4>List</h4>
+				<iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/9qg89zw2/embedded/html,js,result/presentation"></iframe>
+			</section>
+			<section>
+				<h4>Blink</h4>
+				<iframe width="100%" height="600" src="http://jsfiddle.net/delimitless/nzdvzrnw/2/embedded/html,js,result/presentation"></iframe>
+            </section>
           </section>
-        </section>
 
         <section>
           <section>
