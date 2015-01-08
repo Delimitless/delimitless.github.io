@@ -247,7 +247,7 @@ app.controller('CalculatorController', function($scope, CalculatorService) {
 					</code></pre>
 				  </section>
 				  <section>
-				  <h3>Full App Example</h4>
+				  <h3>Simple App Example</h4>
 					<iframe width="100%" height="400" src="http://jsfiddle.net/delimitless/uo1cov3w/1/embedded/result,html,js/presentation"></iframe>
 				  </section>
 				</section>
@@ -267,13 +267,44 @@ app.controller('CalculatorController', function($scope, CalculatorService) {
 					</section>
 				</section>
 				<section>
-					<h2>TODO: Briefly Mention Testing</h2>
+					<h2>Testing</h2>
+					<img src="img/jasmine-karma.png" alt="JasmineAndKarma">
+					<ul>
+						<li class="fragment">Karma - Test Executor (multiple browser testing)</li>
+						<li class="fragment">Jasmine - TDD Framework</li>
+						<li class="fragment">ng-mock for mocking</li>
+						<li class="fragment">Easy to test with dependency injection and view / logic separation!
+					</ul>
 				</section>
 				<section>
-					<h2>TODO: Talk about scaffolding with Yeoman + friends</h2>
-				</section>
-				<section>
-					<h2>TODO: Demo</h2>
+					<section>
+						<h2>Scaffolding with Yeoman</h2>
+						<img src="img/yeoman-workflow.jpg" alt="Yeoman">
+					</section>
+					<section>
+						<h2>Setup</h2>
+						<p>- Install <a href="http://nodejs.org/">nodejs</a></p>
+						<pre><code>
+npm install -g yo bower grunt-cli gulp
+						</code></pre>
+						<pre><code>
+npm install -g generator-angular
+						</code></pre>
+						<pre><code>
+yo angular
+						</code></pre>
+					</section>
+					<section>
+						<img src="img/logo-jhipster-drink-coffee.png" alt="JHipster">
+						<h2>Alternative: JHipster</h2>
+						<pre><code>
+npm install -g generator-jhipster
+						</code></pre>
+						<pre><code>
+yo jhipster
+						</code></pre>
+						<p>Spring Boot + Angular</p>
+					</section>
 				</section>
 				<section>
 					<h2>Bonus: Replace static code with jsfiddle</h2>
