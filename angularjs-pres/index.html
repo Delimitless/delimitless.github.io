@@ -30,13 +30,6 @@
 	</head>
 
 	<body>
-    <script type="text/ng-template" charset="utf-8" id="liveExample.html">
-      <div class="playground"></div>
-      <textarea class="source"></textarea>
-      <button class="reload" ng-click="run()">Run</button>
-      <select ng-model="snippet" ng-options="s.code as s.title for s in snippets" ng-change="loadSnippet(snippet)">
-    </script>
-
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -189,14 +182,7 @@
 				  </section>
 				  <section>
 					<h2>Define modules</h2>
-					<pre><code contenteditable class="javascript">
-// New Module
-angular.module('someApp',[]);
-angular.module('yetAnotherApp',[]);
-
-// New Module with Injected Dependencies
-var app = angular.module('calcApp', ['someApp', 'yetAnotherApp']);
-					</code></pre>
+					<iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/nx9rLmhc/1/embedded/js/presentation"></iframe>
 				  </section>
 				  <section>
 					<h2>Declare Dependencies</h2>
@@ -208,43 +194,11 @@ var app = angular.module('calcApp', ['someApp', 'yetAnotherApp']);
 				  </section>
 				  <section>
 					<h2>Provide Services</h2>
-					<pre><code contenteditable class="javascript">
-app.service('MathService', function() {
-    this.add = function(a, b) { return a + b };
-     
-    this.subtract = function(a, b) { return a - b };
-     
-    this.multiply = function(a, b) { return a * b };
-     
-    this.divide = function(a, b) { return a / b };
-});
- 
-app.service('CalculatorService', function(MathService){
-    this.square = function(a) { return MathService.multiply(a,a); };
-	
-    this.cube = function(a) { 
-		return MathService.multiply(a, MathService.multiply(a,a)); 
-	};
-});
-
-app.controller('CalculatorController', function($scope, CalculatorService) {
-    $scope.doSquare = function() {
-        $scope.answer = CalculatorService.square($scope.number);
-    }
- 
-    $scope.doCube = function() {
-        $scope.answer = CalculatorService.cube($scope.number);
-    }
-});
-					</code></pre>
+					<iframe width="100%" height="650" src="http://jsfiddle.net/delimitless/y5m05dz9/embedded/js/presentation"></iframe>
 				  </section>
 				  <section>
 					<h2>Initialize app</h2>
-					<pre><code contenteditable class="html">
-&lt;div ng-app="calcApp"&gt;
-  ...
-&lt;/div&gt;
-					</code></pre>
+					<iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/z15q5pz9/embedded/html/presentation"></iframe>
 				  </section>
 				  <section>
 				  <h3>Simple App Example</h4>
@@ -307,9 +261,13 @@ yo jhipster
 					</section>
 				</section>
 				<section>
-					<h2>Bonus: Replace static code with jsfiddle</h2>
-					<h2>Bonus: Add REST service call to one of the samples</h2>
-					<h2>Bonus: Add background colors, slide transition</h2>
+					<h2>Learn more...</h2>
+					<ul>
+						<li>Pro AngularJS by Adam Freeman</li>
+						<li>https://www.youtube.com/user/angularjs</li>
+						<li>egghead.io</li>
+						<li>pluralsight.com</li>
+					</ul>
 				</section>
 			</div>
 		</div>
