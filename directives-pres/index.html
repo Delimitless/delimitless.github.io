@@ -39,7 +39,179 @@
 					<img src="img/AngularJS_logo.svg.png" alt="AngularJS">
 					<h4>Directives</h4>
 				</section>
+
+        <section>
+          <h2>What are Directives?</h2>   
+          <ul>
+            <li>Custom html elements & attributes (to a lesser extent, css and comments)</li>
+            <li>Angular already provides several of these</li>
+            <li>Kind of a big deal.</li>
+          </ul>
+          <pre>
+            <code data-trim>
+              &lt;h3&gt;FIFA Mactch Summary:&lt;/h3&gt;
+              &lt;div ng-app ng-controller=&quot;MyCtrl&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li ng-repeat=&quot;(country,goals) in items&quot;&gt;{{country}}: {{goals}}&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Building our own</h2>
+          <ul>
+            <li>While angular provides many, you will at some point want to create your own</li>
+            <li>Especially if doing any DOM manipulation, or for reusability of a widget</li>
+            <li>They're one of the hardest things in Angular. (and out of all front-end frameworks)</li>
+            <li>To create your own, just invoke 'directive' from a module:</li>
+            <pre>
+              <code>
+                module.directive('someDirective', fn);
+              </code>
+            </pre>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Naming your Directive</h2>
+          <ul>
+            <li>Use camelCase</li>
+            <li>'camelCase' is converted to 'camel-case' in the HTML</li>
+            <li>Names should be prefixed to avoid naming collisions</li>
+          </ul>
+          <pre>
+            <code>
+              angular
+                  .module('shared.widgets')
+                  .directive('mcySharedSpinner', sharedSpinner);
+
+              function sharedSpinner() {
+                  /* implementation details */
+              }
+            </code>
+          </pre>
+          <pre>
+            <code>
+              &lt;mcy-shared-spinner\&gt;
+            </code>
+          </pre>
+        </section>
 				
+        <section>
+          <h2>Configuring your Directive</h2>
+          <ul>
+            <li>Return a configuration object, which has everything needed to define your directive.</li>
+          </ul>
+          <pre>
+            <code>
+              angular
+                  .module('app.widgets')
+                  .directive('myCalendarRange', myCalendarRange);
+
+              function myCalendarRange() {
+                  return {
+                      templateUrl: '/template/is/located/here.html',
+                      restrict: 'E'
+                  };
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <section>
+            <h2>Directive config Attributes</h2>
+            <ul>
+              <li>template</li>
+              <li>templateUrl</li>
+              <li>restrict</li>
+              <li>link</li>
+              <li>scope</li>
+              <li>transclude</li>
+              <li>controller</li>
+              <li>controllerAs</li>
+              <li>require</li>
+              <li>compile</li>
+              <li>priority</li>
+              <li>terminal</li>
+              <li>type</li>
+              <li>replace <em>*deprecated*</em></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>template</h2>
+            <p>Inserts the HTML string into the HTML element that used it</p>
+            <pre>
+              <code>
+                angular
+                    .module('demo')
+                    .directive('mcyWelcome', mcyWelcome);
+
+                function mcyWelcome() {
+                  return {
+                    template: '<span>Welcome!</span>'
+                  };
+                }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>templateUrl</h2>
+            <p>Same as template, except you can point to an actual html file instead of embedding the string</p>
+            <pre>
+              <code>
+                angular
+                    .module('demo')
+                    .directive('mcyWelcome', mcyWelcome);
+
+                function mcyWelcome() {
+                  return {
+                    templateUrl: '/templates/welcome.html'
+                  };
+                }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>restrict</h2>
+              <p>Values: E, A, C, M</p>
+
+           <pre><code>E - Element Name: &lt;my-directive&gt;&lt;/my-directive&gt;</code></pre>
+           <pre><code>A - Attribute (default): &lt;div mydirective=&rdquo;exp&rdquo;&gt;&lt;/div&gt;</code></pre>
+           <pre><code>C - Css Class: &lt;div class=&rdquo;my-directive&rdquo;&gt;&lt;/div&gt;</code></pre>
+           <pre><code>M - Comment: &lt;!-- directive: mydirective --&gt;</code></pre>
+          </section>
+
+          <section>
+            <h2>restrict</h2>
+            <p>Example:</p>
+            <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/xz4hdx5b/6/embedded/js,html,result/"></iframe>
+          </section>
+
+          <section>
+            <h2>Exercise 01</h2>
+            <p><a href="https://plnkr.co/edit/HDYCH0DjrpK6jPxSFEIU?p=preview" target="_blank">start here</a></p>
+            <div>
+              Result when finished:
+              <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/L4tfLta8/embedded/result/"></iframe>
+            </div>
+            <p>Solution: <a href="https://plnkr.co/edit/iJPkwJVpaABZbHdCFqu2?p=preview" target="_blank">plnkr link</a></p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Advanced Directives</h2>
+        </section>
+
+        <section>
+          <h2>Cheatsheet</h2>
+          <a href="https://d2eip9sf3oo6c2.cloudfront.net/pdf/egghead-io-directive-definition-object-cheat-sheet.pdf">Egghead.io CheatSheet PDF</a>
+        </section>
 			</div>
 		</div>
 
