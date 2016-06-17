@@ -200,8 +200,89 @@
               Result when finished:
               <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/L4tfLta8/embedded/result/"></iframe>
             </div>
-            <p class="fragment">Solution: <a href="https://plnkr.co/edit/iJPkwJVpaABZbHdCFqu2?p=preview" target="_blank">plnkr link</a></p>
+            <p class="fragment">Solution: <a href="https://plnkr.co/edit/iJPkwJVpaABZbHdCFqu2?p=preview" target="_blank">Plunker link</a></p>
           </section>
+
+          <section>
+            <h2>link</h2>
+            <ul>
+              <li>
+                function, takes five arguments:
+                <ul>
+                  <li>scope <em>*more on this later*</em></li>
+                  <li>element</li>
+                  <li>attributes</li>
+                  <li>controller <em>*only if you have a controller*</em></li>
+                  <li>transcludeFn <em>*rarely used*</em></li>
+                </ul>
+              </li>
+              <li>Generally, you'll use it if you need to manipulate the DOM</li>
+              <li>Can also be used to facilitate communication between directives using their controllers</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>link</h2>
+            <iframe width="100%" height="500" src="http://jsfiddle.net/delimitless/0n6v8qpt/5/embedded/html,js,result/"></iframe>
+          </section>
+
+          <section>
+            <h2>scope</h2>
+            <ul>
+              <li>
+                Directives can have three possible values for a scope
+                <ul>
+                  <li>omitted or false: part of current scope</li>
+                  <li>true: creates new child scope, descended of parent scope (one-directional, parent to child)</li>
+                  <li>{}: isolate scope, can only access $rootScope</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>scope (false or omitted)</h2>
+            <iframe width="100%" height="600" src="http://jsfiddle.net/delimitless/bo778dpo/embedded/html,js,result/"></iframe> 
+          </section>
+
+          <section>
+            <h2>scope (true)</h2>
+            <p>Click to reverse, first.</p>
+            <iframe width="100%" height="550" src="http://jsfiddle.net/delimitless/3nkdjyf6/1/embedded/html,js,result/"></iframe>
+          </section>
+
+          <section>
+            <h2>scope (isolate)</h2>
+            <iframe width="100%" height="550" src="http://jsfiddle.net/delimitless/1y7hsf0d/1/embedded/html,js,result/"></iframe>
+          </section>
+
+          <section>
+            <h2>scope (isolate: prefixes)</h2>
+            <ul>
+              <li>You can control scope sharing using three prefixes,</li>
+              <li>@ - one-way binding, always ends up a string value</li>
+              <li>= - bi-directional binding</li>
+              <li>& - bind to an expression (usually a function)</li>
+            </ul>
+              <p><a href="http://plnkr.co/edit/dGnoxyLdQ2eULoJBSKgM?p=preview" target="_blank">@ Plunker Example</a></p>
+              <p><a href="http://plnkr.co/edit/xr81m6XgvqklKv5tIeTL?p=preview" target="_blank">=, & Plunker Example</a></p>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Exercise 02</h2>
+            <p><a href="https://plnkr.co/edit/zp6HZ5dbKste2fKqdEqy?p=preview" target="_blank">start here</a></p>
+            <div>
+              Result when finished:
+              <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/usm7s87t/embedded/result/"></iframe>
+            </div>
+            <p class="fragment">Solution: <a href="https://plnkr.co/edit/XxfUdtkzMLOJRtz8p8KJ?p=preview" target="_blank">Plunker link</a></p>
+          </section>
+
+          <section>
+            <h2>transclude</h2>
+          </section>
+
         </section>
 
         <section>
@@ -210,7 +291,7 @@
 
         <section>
           <h2>Cheatsheet</h2>
-          <a href="https://d2eip9sf3oo6c2.cloudfront.net/pdf/egghead-io-directive-definition-object-cheat-sheet.pdf">Egghead.io CheatSheet PDF</a>
+          <a href="https://d2eip9sf3oo6c2.cloudfront.net/pdf/egghead-io-directive-definition-object-cheat-sheet.pdf" target="_blank">Egghead.io CheatSheet PDF</a>
         </section>
 			</div>
 		</div>
