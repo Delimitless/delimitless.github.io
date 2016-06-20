@@ -281,12 +281,98 @@
 
           <section>
             <h2>transclude</h2>
+            <ul>
+              <li>Allows you to wrap elements with our own custom directives</li>
+              <li>In the directive configuration, set transclude to true</li>
+              <li>Include an ng-transclude attribute in your template</li>
+              <li>ng-transclude will be replaced by the inner content of what your directive is wrapping</li>
+            </ul>
           </section>
 
+          <section>
+            <h2>transclude</h2>
+            <iframe width="100%" height="610" src="http://jsfiddle.net/delimitless/gs745qjv/embedded/html,js,result/"></iframe> 
+          </section>
+
+          <section>
+            <h2>controller</h2>
+            <ul>
+              <li>used to give a directive its own controller</li>
+              <li>primary use is for directive-to-directive communication</li>
+              <li>Best Practice: use controller when you want to expose an API to other directives, otherwise use link</li>
+            </ul>
+            <pre>
+              <code>
+                angular.module('docsTabsExample', [])
+                  .directive('myTabs', function() {
+                    return {
+                      restrict: 'E',
+                      transclude: true,
+                      scope: {},
+                      controller: 'docsTabsExampleCtrl'
+                    }
+
+                    functin docsTabsExampleCtrl() {}
+                  });
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>require</h2>
+            <ul>
+              <li>Allows communication between directives</li>
+              <li>You 'require' the other directive by its name</li>
+              <li>Use prefixes to tell angular where to find the other directive</li>
+              <li><strong>'?tabContainer'</strong>: find on current element; null if not found</li>
+              <li><strong>'^tabContainer'</strong>: find on this element, or parents; err if not found</li>
+              <li><strong>'^^tabContainer'</strong>: fond on parent element; error if not found</li>
+              <li><strong>'?^tabContainer'</strong>: find on this element, or parents; pass null if not found</li>
+            </ul>
+            <a href="https://plnkr.co/edit/SdvL44P3eNd5sZEDVQJA?p=preview" target="_blank">controller/require example</a>
+          </section>
+
+          <section>
+            <h2>Handling multiple controllers</h2>
+            <ul>
+              <li>controllers is now an array</li>
+              <li>controllers in array are in order of require</li>
+            </ul>
+            <pre>
+              <code>
+                  function tabExampleDirective() {
+                    return {
+                      require: ['^^myTabs', 'ngModel'],
+                      restrict: 'E',
+                      scope: {
+                        title: '@'
+                      },
+                      link: function(scope, element, attrs, controllers) {
+                        var tabsCtrl = controllers[0],
+                            modelCtrl = controllers[1];
+
+                        tabsCtrl.addPane(scope);
+                      },
+                      templateUrl: 'my-pane.html'
+                    };
+                  });
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Exercise 03 TODO</h2>
+            <p><a href="https://plnkr.co/edit/zp6HZ5dbKste2fKqdEqy?p=preview" target="_blank">start here</a></p>
+            <div>
+              Result when finished:
+              <iframe width="100%" height="300" src="http://jsfiddle.net/delimitless/usm7s87t/embedded/result/"></iframe>
+            </div>
+            <p class="fragment">Solution: <a href="https://plnkr.co/edit/XxfUdtkzMLOJRtz8p8KJ?p=preview" target="_blank">Plunker link</a></p>
+          </section>
         </section>
 
         <section>
-          <h2>Advanced Directives</h2>
+          <h2>Testing Directives TODO</h2>
         </section>
 
         <section>
