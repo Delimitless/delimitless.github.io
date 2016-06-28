@@ -212,7 +212,7 @@
                   <li>scope <em>*more on this later*</em></li>
                   <li>element</li>
                   <li>attributes</li>
-                  <li>controller <em>*only if you have a controller*</em></li>
+                  <li>controller <em>*only if you require a directive*</em></li>
                   <li>transcludeFn <em>*rarely used*</em></li>
                 </ul>
               </li>
@@ -297,8 +297,8 @@
           <section>
             <h2>controller</h2>
             <ul>
-              <li>used to give a directive its own controller</li>
-              <li>primary use is for directive-to-directive communication</li>
+              <li>Used to give a directive its own controller</li>
+              <li>Primary use is for directive-to-directive communication</li>
               <li>Best Practice: use controller when you want to expose an API to other directives, otherwise use link</li>
             </ul>
             <pre>
@@ -382,7 +382,54 @@
         </section>
 
         <section>
-          <h2>Testing Directives TODO</h2>
+          <section>
+            <h2>Testing Directives</h2>
+            <ul>
+              <li>Harder to test than things like controllers or services</li>
+              <li>Need to use $compile service to compile the directive</li>
+              <li>May require programmatically causing events to fire, like clicking a button</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>Sample directive 'firstDirective' to test:</p>
+            <iframe width="100%" height="400" src="http://jsfiddle.net/delimitless/66Lprddc/embedded/js/"></iframe>
+
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>First, get compiled element</p>
+            <iframe width="100%" height="550" src="http://jsfiddle.net/delimitless/278vc9ed/embedded/js/"></iframe>
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>You can test the content of the directive, if this is important</p>
+            <iframe width="100%" height="350" src="http://jsfiddle.net/delimitless/y06p73tk/embedded/js/"></iframe>
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>This directive contains a link function with an event handler</p>
+            <iframe width="100%" height="350" src="http://jsfiddle.net/delimitless/drr5b1de/embedded/js/"></iframe>
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>In this case, we need to trigger a dom event, such as clicking the button</p>
+            <iframe width="100%" height="350" src="http://jsfiddle.net/delimitless/0sdrv8yL/embedded/js/"></iframe>
+          </section>
+
+          <section>
+            <h2>Testing Directives</h2>
+            <p>When testing a directive's controller, there are two methods:</p>
+            <ul>
+              <li>Register the controller with the angular module as you normally would, and you can test it using the normal $controller method.</li>
+              <li>If the controller is inline or a function, you can just as easily test since you have access to the scope after compiling the directive</li>
+            </ul>
+          </section>
         </section>
 
         <section>
