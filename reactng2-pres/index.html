@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<img height="200px" width="200px" src="img/react-logo.svg" alt="React">
+					<img height="220px" width="220px" src="img/angular2-logo.png" alt="Angular 2">
+					<h2>Component Based Webapps</h2>
+					<h3>React & ng2</h3>
+				</section>
+
+				<section>
+					<section>
+						<h2>What problem are we solving?</h2>
+						<ul>
+							<li>
+								The mess of ng-controllers
+								<ul>
+									<li>$scope inheritance</li>
+									<li>semi-global data</li>
+									<li>no 1-to-1 coupling between controller & view</li>
+									<li>very little reusability</li>
+								</ul>
+								<br/>
+								Read more: <a href="https://medium.com/@bluepnume/sane-scalable-angular-apps-are-tricky-but-not-impossible-lessons-learned-from-paypal-checkout-c5320558d4ef" target="_blank">
+								Lessons learned from PayPal Checkout
+							</a>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Solution, directives?</h2>
+						<ul>
+							<li>
+								The mess of directives
+								<ul>
+									<li>missing sane defaults</li>
+									<li>ridiculous amount of odd syntax to remember</li>
+									<li>angular component helps some...</li>
+								</ul>
+							</li>
+						</ul>
+						<img src="img/if-you-dont-isolate-scope.jpg" alt="Isolate directive scope">
+					</section>
+					<section>
+						<h2>Other issues we're solving?</h2>
+						<ul>
+							<li>Better language support (ES6/7 & Typescript)</li>
+							<li>Better performance</li>
+							<li>Native app creation</li>
+							<li>Official CLI tool to standardize app creation & lifecycle</li>
+							<li>Easier ways to handle state management</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="margin: 0" src="img/react-major-logo.png" height="250px" width="250px" />
+						<h2>React</h2>
+						<ul>
+							<li><strong>Maintainer: </strong>Facebook</li>
+							<li><strong>First Released: </strong>March 2013, ~3 years old</li>
+							<li><strong>Github Stars: </strong> ~50k</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Reusable Components</h2>
+						<img height="371" width="320" src="img/thinking-in-react-components.png" alt="React Component" />
+					</section>
+					<section>
+						<h2>A View Library</h2>
+						<ul>
+							<li>Just the "V" in "MVC"</li>
+							<li>Uses a virtual dom</li>
+							<li>Need to add other libraries for some basic functionality (ex: axios/fetch for http)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>JavaScript Centric</h2>
+						<ul>
+							<li>No html files, all inside js (Uses JSX)</li>
+							<li>Community favors ES6, facebook supports</li>
+						</ul>
+						[Insert small code snippet?]
+					</section>
+					<section>
+						<h2>State Management</h2>
+						<ul>
+							<li>Facebook recommends "Flux" architecture</li>
+							<li>Unidirectional data flow (as opposed to two-way)</li>
+							<div style="text-align: center">
+								<img style="padding: 0 20px" height="100" width="100" src="img/redux.png" />
+								<img style="padding: 0 20px" height="100" width="100" src="img/mobx.png" />
+							</div>
+							<li>
+								Most popular library (inspired by Flux): Redux
+								<ul>
+									<li>Leans towards functional programming</li>
+									<li>Immutable states make testing easier</li>
+									<li>Object Oriented alternative: Mobx</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Testing</h2>
+						<ul>
+							<li>
+								Facebook recommends Jest
+								<ul>
+									<li>Uses Jasmine under the hood</li>
+									<li>Allows snapshotting to quickly test presentational components</li>
+									<li>Works out of the box with React CLI</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Pros</h2>
+						<ul class="pro">
+							<li>testing</li>
+							<li>easier to see the big picture</li>
+							<li>statement management is clearer and more testable</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Cons</h2>
+						<ul class="con">
+							<li>requires extra libraries to do basic things like talk to a server</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>ng2 (Angular 2)</h2>
+						<ul>
+							<li><strong>Maintainer: </strong>Google</li>
+							<li><strong>First Released: </strong>September 2016, ~1 month old</li>
+							<li><strong>Github Stars: </strong> ~17k</li>
+						</ul>
+					</section>
+					<section>
+						<h2>A framework</h2>
+					</section>
+				</section>
+
+				<section>
+					<h2>Recommended Tutorials</h2>
+					<p>[Add links to official tutorials]</p>
+					<p>[Try to have links for both short < 1hr tuts and longer training]</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+        transition: 'slide',
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
