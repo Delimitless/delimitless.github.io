@@ -257,6 +257,94 @@
 							<li>Good IDE support, especially in VSCode & IntelliJ</li>
 						</ul>
 					</section>
+					<section>
+						<h1>Brief Comparison of ng 1 to 2</h1>
+						<p>See <a href="https://angular.io/docs/ts/latest/cookbook/a1-a2-quick-reference.html" target="_blank">here</a> for a full reference</p>
+					</section>
+					<section>
+						<h2>Interpolation & Filters</h2>
+						<p>Have pretty much stayed the same</p>
+						<img src="img/ng2-bindings.png" />
+						<img src="img/ng2-pipe.png" />
+					</section>
+          <section>
+						<h2>ng-repeat & local variables</h2>
+            <img src="img/ng2-ngFor.png" />
+					</section>
+					<section>
+						<h2>ng-class [one-way attributes]</h2>
+						<img src="img/ng2-class.png" />
+					</section>
+					<section>
+						<h2>ng-click (events)</h2>
+						<img src="img/ng2-click.png" />
+					</section>
+					<section>
+						<h2>ng-model [(two-way binding)]</h2>
+						<img src="img/ng2-model.png" />
+					</section>
+					<section>
+						<h2>ng-controller - @Component</h2>
+						<script async src="//jsfiddle.net/delimitless/u1v7qyws/1/embed/js,html/"></script>
+					</section>
+          <section>
+						<h2>Dependency Injection</h2>
+						<script async src="//jsfiddle.net/delimitless/9fz9cf6a/2/embed/js/"></script>
+					</section>
+          <section>
+            <img src="img/rxjs-logo.png" />
+						<h2>RxJS</h2>
+						<p>Angular 2's Http service uses this by default</p>
+            <ul>
+							<li>Allows you go subscribe to an http call</li>
+              <li>Allows you to filter, compose, etc..</li>
+              <li>Only get updated when what you filtered changes</li>
+						</ul>
+					</section>
+          <section>
+						<h2>Testing</h2>
+						<ul>
+							<li>Test Utils provided by Angular 2</li>
+							<li>Uses Jasmine under the hood</li>
+							<li>Some tests may require a bit of setup</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Tooling</h2>
+						<ul>
+							<li>
+								<a href="https://github.com/angular/angular-cli">Angular CLI</a> (Official CLI)
+								<ul>
+									<li>Based on highly successful Ember CLI tool</li>
+									<li>Allows you to create components, services, etc.. from command line</li>
+									<li>Still in beta...</li>
+								</ul>
+							</li>
+							<li><a href="https://github.com/rangle/augury">Augury ng2 chrome dev tool</a> (Unofficial, work in progress)</li>
+						</ul>
+					</section>
+					<section data-background="#CBE9C6">
+						<h2>Pros (vs React)</h2>
+						<ul>
+							<li>Framework provides most of what you need</li>
+							<li>More opinionated, standardizing is easier</li>
+							<li>Closer to Java syntax, easier for non-JavaScript devs</li>
+							<li>CLI tool standardizes creating new components, services..</li>
+							<li>Can leverage some Angular 1 experiences</li>
+							<li>RxJS works out of the box (must be added to React)</li>
+							<li>Easier sell to department</li>
+						</ul>
+					</section>
+					<section data-transition="convex" data-background="#FF9B9C">
+						<h2>Cons</h2>
+						<ul>
+              <li>Just released, still going through bug fixes</li>
+							<li>Unofficial tutorials may not work due to breaking changes</li>
+							<li>Requires a lot of framework specific syntax to learn</li>
+							<li>Testing is more difficult, especially mocking angular services</li>
+							<li>CLI tool is still in beta</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
